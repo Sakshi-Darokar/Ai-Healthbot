@@ -87,6 +87,39 @@ Feel free to open issues, contribute, or suggest improvements!
 
 ---
 
+
+AI-HealthBot/
+│
+├── main.py
+├── README.md
+├── requirements.txt
+│
+├── phase1_preprocessing/
+│   └── phase1_preprocess.py
+│
+├── pubmed/
+│   ├── pubmed_utils.py
+│   ├── pubmed_search.py
+│   └── query_faiss.py
+│
+├── symptom_analysis/
+│   ├── smart_dialog_manager.py
+│   ├── symptom_profiler.py
+│   ├── symptom_classifier.py
+│   └── disease_predictor.py
+│
+├── utils/
+│   └── mesh_parser.py
+│
+└── data/
+    ├── desc2025.xml
+    ├── mesh_faiss.index
+    └── mesh_labels.pkl
+
+
+
+
+
 ## 📜 Disclaimer
 
 This project is **not intended to provide medical advice**. Always consult a licensed healthcare provider for any medical concerns.
