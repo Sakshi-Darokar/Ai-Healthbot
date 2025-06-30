@@ -16,7 +16,7 @@ def get_memory_llm():
     llm = ChatOpenAI(
         model="mistralai/Mistral-7B-Instruct-v0.1",
         base_url="https://api.together.xyz/v1",
-        api_key="d8c060eb5ce40cf1199ed89ecf51d6c40aa5865958c0aea5995265272dc35812",
+        api_key="API_KEY",
         temperature=0.5
     )
 
