@@ -1,7 +1,7 @@
 streamlit
 openai
 langdetect
-googletrans==4.0.0-rc1
+
 textblob
 beautifulsoup4
 requests
