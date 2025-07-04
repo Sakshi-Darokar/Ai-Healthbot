@@ -1,6 +1,10 @@
 # langchain_memory.py
 from langchain.memory import ConversationBufferMemory
 from langchain_openai import ChatOpenAI
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load variables from .env
 
 class ChatMemoryWrapper:
     def __init__(self, buffer):
@@ -15,8 +19,8 @@ class ChatMemoryWrapper:
 def get_memory_llm():
     llm = ChatOpenAI(
         model="mistralai/Mistral-7B-Instruct-v0.1",
-        base_url="https://api.together.xyz/v1",
-        api_key="API_KEY",
+        base_url=os.getenv("OPENAI_BASE_URL"),
+        api_key=os.getenv("OPENAI_API_KEY"),
         temperature=0.5
     )
 
