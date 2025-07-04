@@ -1,5 +1,18 @@
 # main.py
 import streamlit as st
+import os
+import zipfile
+
+# Unzip desc2025.xml if not already present
+if not os.path.exists("desc2025.xml"):
+    if os.path.exists("desc2025.zip"):
+        with zipfile.ZipFile("desc2025.zip", "r") as zip_ref:
+            zip_ref.extractall(".")
+        print("desc2025.xml extracted from desc2025.zip")
+    else:
+        raise FileNotFoundError("desc2025.zip not found. Please upload it to the repo.")
+
+
 from phase1_preprocess import preprocess_input
 from pubmed_utils import get_evidence_links
 from symptom_classifier import is_valid_symptom
