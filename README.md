@@ -116,6 +116,20 @@ AI-HealthBot/
     ├── mesh_faiss.index
     └── mesh_labels.pkl
 
+⚠️ Note on Dataset and FAISS File Upload
+The following files could not be uploaded to this GitHub repository due to their large size:
+
+pgsql
+Copy
+Edit
+data/
+├── desc2025.xml
+├── mesh_faiss.index
+└── mesh_labels.pkl
+These files are essential for the vector search and MeSH-based medical mapping in the AI HealthBot system. Due to GitHub's file size limits and LFS restrictions, we are storing and loading these files externally during deployment.
+
+If you're trying to run this project locally, please make sure to manually add the above files inside the data/ folder.
+
 
 
 
