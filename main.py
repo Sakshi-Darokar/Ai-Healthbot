@@ -1,5 +1,10 @@
 # main.py
 import streamlit as st
+from download_utils import download_all_files
+
+# Automatically download files from Hugging Face if missing
+download_all_files()
+
 from phase1_preprocess import preprocess_input
 from pubmed_utils import get_evidence_links
 from symptom_classifier import is_valid_symptom
