@@ -1,9 +1,18 @@
 # main.py
+
 import streamlit as st
 from download_utils import download_all_files
 
-# Automatically download files from Hugging Face if missing
-download_all_files()
+st.set_page_config(page_title="AI HealthBot", layout="centered")
+
+# 🔍 DEBUG block to catch & print download errors
+try:
+    download_all_files()
+except Exception as e:
+    st.error("❌ Failed to download required files.")
+    st.exception(e)
+    st.stop()
+
 
 from phase1_preprocess import preprocess_input
 from pubmed_utils import get_evidence_links
