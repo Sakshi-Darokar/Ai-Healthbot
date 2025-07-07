@@ -1,12 +1,12 @@
 import os
 import time
-from huggingface_hub import hf_hub_download
+from huggingface_hub import hf_hub_download  # ✅ DO NOT import LocalEntryNotFoundError
 
 REPO_ID = "DarokarSakshi/desc2025-dataset"
 
 def download_from_hf(filename, retries=5):
     """
-    Downloads file from Hugging Face Hub with retry mechanism
+    Download a file from Hugging Face Hub using hf_hub_download with retries.
     """
     if os.path.exists(filename):
         print(f"✔️ {filename} already exists locally.")
@@ -20,18 +20,18 @@ def download_from_hf(filename, retries=5):
                 filename=filename,
                 repo_type="dataset",
                 local_dir=".",
+                local_dir_use_symlinks=False
             )
-            print(f"✅ {filename} downloaded successfully.")
+            print(f"✅ {filename} downloaded successfully to {file_path}")
             return
         except Exception as e:
             wait_time = 2 ** attempt
-            print(f"⚠️ Attempt {attempt} failed: {str(e)}")
+            print(f"⚠️ Attempt {attempt} failed: {e}")
             if attempt < retries:
-                print(f"⏳ Waiting {wait_time} seconds before retry...")
+                print(f"⏳ Retrying in {wait_time} seconds...")
                 time.sleep(wait_time)
             else:
-                print(f"❌ Final attempt failed. Giving up on {filename}.")
-                raise e
+                raise RuntimeError(f"❌ Failed to download {filename} after {retries} attempts. Error: {e}")
 
 def download_all_files():
     download_from_hf("desc2025.xml")
