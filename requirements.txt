@@ -1,0 +1,15 @@
+streamlit
+openai
+langdetect
+# googletrans==4.0.0-rc1
+textblob
+beautifulsoup4
+requests
+torch
+transformers
+faiss-cpu
+tqdm
+deep-translator
+langchain
+langchain-openai
+python-dotenv
