@@ -1,13 +1,10 @@
 import os
 import time
-from huggingface_hub import hf_hub_download  # ✅ DO NOT import LocalEntryNotFoundError
+from huggingface_hub import hf_hub_download
 
 REPO_ID = "DarokarSakshi/desc2025-dataset"
 
 def download_from_hf(filename, retries=5):
-    """
-    Download a file from Hugging Face Hub using hf_hub_download with retries.
-    """
     if os.path.exists(filename):
         print(f"✔️ {filename} already exists locally.")
         return
@@ -19,8 +16,7 @@ def download_from_hf(filename, retries=5):
                 repo_id=REPO_ID,
                 filename=filename,
                 repo_type="dataset",
-                local_dir=".",
-                local_dir_use_symlinks=False
+                local_dir=".",  # This is enough — no need for symlink flags
             )
             print(f"✅ {filename} downloaded successfully to {file_path}")
             return
