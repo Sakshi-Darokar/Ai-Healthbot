@@ -22,3 +22,5 @@ requests
 torch
 faiss-cpu
 tqdm
+
+huggingface-hub
