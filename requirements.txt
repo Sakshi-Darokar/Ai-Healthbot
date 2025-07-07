@@ -1,15 +1,24 @@
+# Core UI
 streamlit
+
+# LLM + APIs
 openai
-langdetect
-# googletrans==4.0.0-rc1
-textblob
-beautifulsoup4
-requests
-torch
 transformers
-faiss-cpu
-tqdm
-deep-translator
 langchain
 langchain-openai
 python-dotenv
+
+# NLP & Translation
+langdetect
+textblob
+deep-translator
+# Optional alternative: googletrans==4.0.0-rc1
+
+# Web scraping & requests
+beautifulsoup4
+requests
+
+# ML & Embeddings
+torch
+faiss-cpu
+tqdm
