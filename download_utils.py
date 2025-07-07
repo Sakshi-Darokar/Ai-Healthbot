@@ -1,25 +1,26 @@
 import os
-import requests
+from huggingface_hub import hf_hub_download
 
-# ✅ Hugging Face base path (your dataset repo)
-HF_BASE = "https://huggingface.co/datasets/DarokarSakshi/desc2025-dataset/resolve/main/"
+# Set Hugging Face dataset repo
+REPO_ID = "DarokarSakshi/desc2025-dataset"
 
-# 🔽 Helper to download individual file
 def download_from_hf(filename):
-    url = HF_BASE + filename
     if not os.path.exists(filename):
-        print(f"📥 Downloading: {filename} from Hugging Face...")
-        response = requests.get(url)
-        if response.status_code == 200:
-            with open(filename, 'wb') as f:
-                f.write(response.content)
-            print(f"✅ {filename} downloaded successfully.")
-        else:
-            raise Exception(f"❌ Failed to download {filename}. Status code: {response.status_code}")
+        print(f"📥 Downloading {filename} from Hugging Face Hub...")
+        try:
+            file_path = hf_hub_download(
+                repo_id=REPO_ID,
+                filename=filename,
+                repo_type="dataset",
+                local_dir=".",  # Current directory
+                local_dir_use_symlinks=False
+            )
+            print(f"✅ {filename} downloaded and saved at: {file_path}")
+        except Exception as e:
+            raise Exception(f"❌ Failed to download {filename}: {str(e)}")
     else:
-        print(f"✔️ {filename} already exists locally. Skipping.")
+        print(f"✔️ {filename} already exists, skipping.")
 
-# 📦 Call this from app.py to download all files
 def download_all_files():
     download_from_hf("desc2025.xml")
     download_from_hf("mesh_faiss.index")
